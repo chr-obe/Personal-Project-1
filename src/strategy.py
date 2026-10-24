@@ -1,5 +1,11 @@
-from game import Game
-from round import Round
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from src.round import Round
+
+from src.game import Game
 
 
 class Strategy:
@@ -14,7 +20,7 @@ class Strategy:
 
     # This will be overridden by child classes
     # It should return either 0 or 1 (e.g. in the prisoner's dilemma, cooperate or defect)
-    def decide(self, game: Game, history: list[Round]) -> int:
+    def decide(self, game: Game | None, history: list[Round] | None) -> int:
         raise NotImplementedError("method is meant to be overridden by its children")
 
     def update_score(self, change: int) -> None:
