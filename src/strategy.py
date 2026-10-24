@@ -7,9 +7,9 @@ class Strategy:
                        id: int,
                        starting_score: int = 0,
                        allow_elimination: bool = False):
-        self.id = f"{name}#{id}"
+        self._id = f"{name}#{id}"
         self._score = starting_score
-        self.allow_elimination = allow_elimination
+        self._allow_elimination = allow_elimination
         self._is_eliminated = False
 
     # This will be overridden by child classes
@@ -22,7 +22,7 @@ class Strategy:
             return
 
         self._score += change
-        if self.allow_elimination and self._score <= 0:
+        if self._allow_elimination and self._score <= 0:
             self._is_eliminated = True
 
     @property
@@ -32,3 +32,7 @@ class Strategy:
     @property
     def is_eliminated(self) -> bool:
         return self._is_eliminated
+
+    @property
+    def id(self) -> str:
+        return self._id
