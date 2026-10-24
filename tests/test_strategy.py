@@ -26,5 +26,23 @@ class TestStrategy(unittest.TestCase):
         self.assertEqual(strategy.score, -50)
         self.assertTrue(strategy.is_eliminated)
 
+    def test_strategy_eliminated_at_zero(self):
+        strategy = Strategy("strategy", 1, 1, True)
+        strategy.update_score(-1)
+        self.assertTrue(strategy.is_eliminated)
+
+    def test_score_cannot_update_when_eliminated(self):
+        strategy = Strategy("strategy", 1, 1, True)
+        strategy.update_score(-1)
+        self.assertTrue(strategy.is_eliminated)
+        self.assertEqual(strategy.score, 0)
+        strategy.update_score(-1)
+        self.assertEqual(strategy.score, 0)
+
+    def test_strategy_not_eliminated_unless_allowed(self):
+        strategy = Strategy("strategy", 1, 1)
+        strategy.update_score(-1)
+        self.assertFalse(strategy.is_eliminated)
+
 if __name__ == "__main__":
     unittest.main()
