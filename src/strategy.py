@@ -4,9 +4,8 @@ from enum import IntEnum
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
+    from src.game import Game
     from src.round import Round
-
-from src.game import Game
 
 
 class Strategy:

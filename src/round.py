@@ -7,6 +7,7 @@ if TYPE_CHECKING:
     from src.strategy import Decision, Strategy
 
 from src.game import Game
+from src.strategy import Decision
 
 
 @dataclass
@@ -14,8 +15,8 @@ class Round:
     _game: Game
     strategy_a: Strategy
     strategy_b: Strategy
-    _strategy_a_decision: int | None = field(default=None, init=False)
-    _strategy_b_decision: int | None = field(default=None, init=False)
+    _strategy_a_decision: Decision | None = field(default=None, init=False)
+    _strategy_b_decision: Decision | None = field(default=None, init=False)
     _result: tuple[int, int] | None = field(default=None, init=False)
 
     @property

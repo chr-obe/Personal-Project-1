@@ -1,6 +1,7 @@
 import unittest
 
 from src.game import Game
+from src.strategy import Decision
 
 payoffs: list[list[tuple[int, int]]] = [[(-1, -1), (-3, 0)], [(0, -3), (-2, -2)]]
 
@@ -17,7 +18,7 @@ class TestGame(unittest.TestCase):
 
     def test_get_correct_payoff(self):
         game = Game(payoffs)
-        moves = (0, 1)
+        moves = (Decision.CHOICE_A, Decision.CHOICE_B)
         self.assertEqual(game.get_a_payoff(*moves), -3)
         self.assertEqual(game.get_b_payoff(*moves), 0)
 
