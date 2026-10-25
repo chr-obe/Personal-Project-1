@@ -21,7 +21,7 @@ class Strategy:
 
     # This will be overridden by child classes
     # It should return either 0 or 1 (e.g. in the prisoner's dilemma, cooperate or defect)
-    def decide(self, game: Game | None, history: list[Round] | None) -> int:
+    def decide(self, game: Game | None, history: list[Round] | None) -> Decision:
         raise NotImplementedError("method is meant to be overridden by its children")
 
     def update_score(self, change: int) -> None:
@@ -56,3 +56,7 @@ class Strategy:
 class Position(Enum):
     POSITION_A = 0
     POSITION_B = 1
+
+class Decision(Enum):
+    CHOICE_A = 0
+    CHOICE_B = 1
