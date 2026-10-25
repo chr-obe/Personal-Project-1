@@ -29,5 +29,15 @@ class TestGame(unittest.TestCase):
         game = Game(payoffs)
         self.assertEqual(game.name, "")
 
+    def test_game_no_payoffs_raises_error(self):
+        with self.assertRaises(ValueError):
+            _ = Game([])
+
+    def test_game_too_many_payoffs_raises_error(self):
+        with self.assertRaises(ValueError):
+            _ = Game([[(0, 0), (-1, 1), (1, -1)],
+                         [(1, -1), (0, 0), (-1, 1)],
+                         [(-1, 1), (1, -1), (0, 0)]])
+
 if __name__ == "__main__":
     unittest.main()

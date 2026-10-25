@@ -11,6 +11,8 @@ class Game:
         [[(A0, B0), (A0, B1)], [(A1, B0), (A1, B1)]]
     """
     def __init__(self, payoffs: list[list[tuple[int, int]]], name: str | None = None) -> None:
+        if len(payoffs) != 2 or len(payoffs[0]) != 2 or len(payoffs[1]) != 2:
+            raise ValueError("game should be a 2x2 matrix")
         self._name = name
         self._strategy_a_payoffs: list[list[int]] = [
             [
