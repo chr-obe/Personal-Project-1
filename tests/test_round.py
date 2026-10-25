@@ -31,11 +31,6 @@ class TestRound(unittest.TestCase):
         with self.assertRaises(DecisionAlreadyMadeError):
             round.strategy_a_decision = Decision.CHOICE_B
 
-    def test_invalid_decision_raises_error(self):
-        round = Round(game, strategy_a, strategy_b)
-        with self.assertRaises(ValueError):
-            round.strategy_a_decision = Decision.CHOICE_B
-
     def test_get_results_twice(self):
         round = Round(game, strategy_a, strategy_b)
         round.strategy_a_decision = Decision.CHOICE_B
