@@ -12,30 +12,30 @@ class Match:
 
         # set strategy positions
         strategy_a.position = Position.POSITION_A
-        strategy_a.position = Position.POSITION_B
+        strategy_b.position = Position.POSITION_B
 
     def run_round(self) -> None:
         # create the round
-        round = Round(self.game, self.strategy_a, self.strategy_b)
+        current_round = Round(self.game, self.strategy_a, self.strategy_b)
 
         # get the strategy decisions and set them in the round
         decision_a = self.strategy_a.decide(self.game, self._history)
         decision_b = self.strategy_b.decide(self.game, self._history)
-        round.strategy_a_decision = decision_a
-        round.strategy_b_decision = decision_b
+        current_round.strategy_a_decision = decision_a
+        current_round.strategy_b_decision = decision_b
 
         # add the round to history
-        self._history.append(round)
+        self._history.append(current_round)
 
         # get the round result
-        result = round.result
+        result = current_round.result
 
-        if result is None:
-            return # this shouldn't happen!
+        if result is None: # this shouldn't happen!
+            raise RuntimeError("at least one strategy has not made a decision somehow")
 
         # adjust scores appropriately
-        self.strategy_a.update_score(result[0])
-        self.strategy_b.update_score(result[1])
+        self.strategy_a.update_score(result[Position.POSITION_A])
+        self.strategy_b.update_score(result[Position.POSITION_B])
 
 
     @property
