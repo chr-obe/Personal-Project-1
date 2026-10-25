@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 
 class Strategy:
     def __init__(self, name: str,
-                       id: int,
+                       id: int | str,
                        starting_score: int = 0,
                        allow_elimination: bool = False):
         self._id = f"{name}#{id}"
@@ -30,6 +30,21 @@ class Strategy:
         self._score += change
         if self._allow_elimination and self._score <= 0:
             self._is_eliminated = True
+
+    def temp_clone(self) -> Strategy:
+        id_parts = self.id.split("#")
+        clone = Strategy(id_parts[0], "temp", allow_elimination=self._allow_elimination)
+        return clone
+
+    def __eq__(self, other) -> bool:
+        if not isinstance(other, Strategy):
+            return False
+        return (
+            self.id == other.id and
+            self.score == other.score and
+            self._allow_elimination == other._allow_elimination and
+            self.is_eliminated == other.is_eliminated
+        )
 
     @property
     def score(self) -> int:

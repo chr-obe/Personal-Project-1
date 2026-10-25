@@ -44,5 +44,20 @@ class TestStrategy(unittest.TestCase):
         strategy.update_score(-1)
         self.assertFalse(strategy.is_eliminated)
 
+    def test_clone(self):
+        strategy = Strategy("strategy", 1)
+        clone = strategy.temp_clone()
+        expected = Strategy("strategy", "temp")
+        self.assertEqual(clone, expected)
+
+    def test_strategy_id(self):
+        strategy = Strategy("strategy", 1)
+        self.assertEqual(strategy.id, "strategy#1")
+
+    def test_clone_id(self):
+        strategy = Strategy("strategy", 1)
+        clone = strategy.temp_clone()
+        self.assertEqual(clone.id, "strategy#temp")
+
 if __name__ == "__main__":
     unittest.main()
