@@ -35,7 +35,7 @@ class Round:
         return self._result
 
     @property
-    def strategy_a_decision(self) -> int | None:
+    def strategy_a_decision(self) -> Decision | None:
         return self._strategy_a_decision
 
     @strategy_a_decision.setter
@@ -45,7 +45,7 @@ class Round:
         self._strategy_a_decision = decision
 
     @property
-    def strategy_b_decision(self) -> int | None:
+    def strategy_b_decision(self) -> Decision | None:
         return self._strategy_b_decision
 
     @strategy_b_decision.setter
