@@ -42,8 +42,6 @@ class Round:
     def strategy_a_decision(self, decision: Decision) -> None:
         if self._strategy_a_decision is not None:
             raise DecisionAlreadyMadeError
-        if decision not in [0, 1]:
-            raise ValueError("invalid decision: must be 0 or 1")
         self._strategy_a_decision = decision
 
     @property
@@ -54,8 +52,6 @@ class Round:
     def strategy_b_decision(self, decision: Decision) -> None:
         if self.strategy_b_decision is not None:
             raise DecisionAlreadyMadeError
-        if decision not in [0, 1]:
-            raise ValueError("invalid decision: must be 0 or 1")
         self._strategy_b_decision = decision
 
 class DecisionAlreadyMadeError(Exception):
