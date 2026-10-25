@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from enum import Enum
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -42,3 +43,16 @@ class Strategy:
     @property
     def id(self) -> str:
         return self._id
+
+    @property
+    def position(self) -> Position:
+        return self._position
+
+    @position.setter
+    def position(self, position: Position) -> None:
+        self._position = position
+
+
+class Position(Enum):
+    POSITION_A = 0
+    POSITION_B = 1
