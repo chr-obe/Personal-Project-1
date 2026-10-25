@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from src.strategy import Strategy
+    from src.strategy import Decision, Strategy
 
 from src.game import Game
 
@@ -14,9 +14,9 @@ class Round:
                        strategy_b: Strategy,) -> None:
         self._game = game
         self.strategy_a = strategy_a
-        self._strategy_a_decision: int | None = None
+        self._strategy_a_decision: Decision | None = None
         self.strategy_b = strategy_b
-        self._strategy_b_decision: int | None = None
+        self._strategy_b_decision: Decision | None = None
         self._result: tuple[int, int] | None = None
 
     @property
@@ -39,7 +39,7 @@ class Round:
         return self._strategy_a_decision
 
     @strategy_a_decision.setter
-    def strategy_a_decision(self, decision: int) -> None:
+    def strategy_a_decision(self, decision: Decision) -> None:
         if self._strategy_a_decision is not None:
             raise DecisionAlreadyMadeError
         if decision not in [0, 1]:
@@ -51,7 +51,7 @@ class Round:
         return self._strategy_b_decision
 
     @strategy_b_decision.setter
-    def strategy_b_decision(self, decision: int) -> None:
+    def strategy_b_decision(self, decision: Decision) -> None:
         if self.strategy_b_decision is not None:
             raise DecisionAlreadyMadeError
         if decision not in [0, 1]:

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from enum import Enum
+from enum import IntEnum
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -53,10 +53,10 @@ class Strategy:
         self._position = position
 
 
-class Position(Enum):
+class Position(IntEnum):
     POSITION_A = 0
     POSITION_B = 1
 
-class Decision(Enum):
+class Decision(IntEnum):
     CHOICE_A = 0
     CHOICE_B = 1
