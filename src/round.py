@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -8,16 +9,14 @@ if TYPE_CHECKING:
 from src.game import Game
 
 
+@dataclass
 class Round:
-    def __init__(self, game: Game,
-                       strategy_a: Strategy,
-                       strategy_b: Strategy,) -> None:
-        self._game = game
-        self.strategy_a = strategy_a
-        self._strategy_a_decision: Decision | None = None
-        self.strategy_b = strategy_b
-        self._strategy_b_decision: Decision | None = None
-        self._result: tuple[int, int] | None = None
+    _game: Game
+    strategy_a: Strategy
+    strategy_b: Strategy
+    _strategy_a_decision: int | None = field(default=None, init=False)
+    _strategy_b_decision: int | None = field(default=None, init=False)
+    _result: tuple[int, int] | None = field(default=None, init=False)
 
     @property
     def result(self) -> tuple[int, int] | None:
