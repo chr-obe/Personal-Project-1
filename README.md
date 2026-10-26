@@ -10,6 +10,7 @@ It comes with the following strategies pre-programmed:
 - Random: randomly selects its move
 - Always A: always selects the first option
 - Always B: always selects the second option
+- Alternator: alternates between the first and second options, starting with the first
 
 Additionally, the following classic game theory games are pre-programmed:
 - Prisoner's Dilemma
