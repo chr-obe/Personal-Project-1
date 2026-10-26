@@ -1,10 +1,10 @@
 import unittest
 
-from src.alternator import Alternator
 from src.game import Game
 from src.match import Match
+from src.strategies.alternator import Alternator
+from src.strategies.tit_for_tat import TitForTat
 from src.strategy import Decision
-from src.tit_for_tat import TitForTat
 
 game = Game([[(10, 10), (1, 8)], [(8, 1), (5, 5)]])
 

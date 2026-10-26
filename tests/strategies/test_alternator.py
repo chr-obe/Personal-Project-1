@@ -1,8 +1,8 @@
 import unittest
 
-from src.alternator import Alternator
 from src.game import Game
 from src.match import Match
+from src.strategies.alternator import Alternator
 from src.strategy import Decision
 
 game = Game([[(10, 10), (1, 8)], [(8, 1), (5, 5)]])

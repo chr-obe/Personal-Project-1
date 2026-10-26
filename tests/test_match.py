@@ -1,10 +1,10 @@
 import unittest
 
-from src.always_a import AlwaysA
-from src.always_b import AlwaysB
 from src.game import Game
 from src.match import Match
 from src.round import Round
+from src.strategies.always_a import AlwaysA
+from src.strategies.always_b import AlwaysB
 from src.strategy import Decision
 
 game = Game([[(-1, -1), (-3, 0)], [(0, -3), (-2, -2)]])

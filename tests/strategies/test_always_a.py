@@ -1,8 +1,8 @@
 import unittest
 
-from src.always_a import AlwaysA
 from src.game import Game
 from src.round import Round
+from src.strategies.always_a import AlwaysA
 from src.strategy import Decision
 
 # common element among all tests
