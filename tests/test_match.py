@@ -1,6 +1,7 @@
 import unittest
 
 from src.always_a import AlwaysA
+from src.always_b import AlwaysB
 from src.game import Game
 from src.match import Match
 from src.round import Round
@@ -31,6 +32,29 @@ class TestMatch(unittest.TestCase):
 
         self.assertListEqual(match.history, [expected_round])
 
+    def test_get_strategy_a_results(self):
+        strategy_a = AlwaysA(1)
+        strategy_b = AlwaysB(1)
+
+        match = Match(game, strategy_a, strategy_b)
+
+        for _ in range(3):
+            match.run_round()
+
+        expected = [(Decision.CHOICE_A, -3), (Decision.CHOICE_A, -3), (Decision.CHOICE_A, -3)]
+        self.assertListEqual(match.strategy_a_history, expected)
+
+    def test_get_strategy_b_results(self):
+        strategy_a = AlwaysA(1)
+        strategy_b = AlwaysB(1)
+
+        match = Match(game, strategy_a, strategy_b)
+
+        for _ in range(3):
+            match.run_round()
+
+        expected = [(Decision.CHOICE_B, 0), (Decision.CHOICE_B, 0), (Decision.CHOICE_B, 0)]
+        self.assertListEqual(match.strategy_b_history, expected)
 
 if __name__ == "__main__":
     unittest.main()

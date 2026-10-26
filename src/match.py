@@ -1,6 +1,6 @@
 from src.game import Game
 from src.round import Round
-from src.strategy import Position, Strategy
+from src.strategy import Decision, Position, Strategy
 
 
 class Match:
@@ -41,3 +41,21 @@ class Match:
     @property
     def history(self) -> list[Round]:
         return self._history
+
+    @property
+    def strategy_a_history(self) -> list[tuple[Decision, int]]:
+        strategy_history = []
+        for match_round in self._history:
+            if match_round.result is None:
+                raise ValueError("round has no result")
+            strategy_history.append((match_round.strategy_a_decision, match_round.result[Position.POSITION_A]))
+        return strategy_history
+
+    @property
+    def strategy_b_history(self) -> list[tuple[Decision, int]]:
+        strategy_history = []
+        for match_round in self._history:
+            if match_round.result is None:
+                raise ValueError("round has no result")
+            strategy_history.append((match_round.strategy_b_decision, match_round.result[Position.POSITION_B]))
+        return strategy_history
